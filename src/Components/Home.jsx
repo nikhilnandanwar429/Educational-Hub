@@ -1,16 +1,16 @@
 import React from "react";
 
-
-function Home() {
+export default function Home() {
     return (
         <>
-        <div>
+        <div className="<div>Home</div>w-full flex flex-wrap">
             <div>
-                
+               <div></div>
+               <div></div>
             </div>
+            <div></div>
+
         </div>
         </>
     )
 }
-
-export default Home
