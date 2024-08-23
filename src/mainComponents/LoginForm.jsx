@@ -2,9 +2,14 @@ import React, { useState } from 'react'
 import {AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai'
 import {Link, useNavigate} from "react-router-dom"
 import toast from "react-hot-toast"
+import { useSelector, useDispatch } from 'react-redux';
+import {login, logout} from "../features/auth/authSlice"
 
 
 function LoginForm({setIsLogin}) {
+
+    const isLogin = useSelector((state) => state.auth.isLogin);
+    const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
         email: "",
@@ -23,7 +28,7 @@ function LoginForm({setIsLogin}) {
     function submitHandler(event) {
         event.preventDefault();
         navigate('/dashboard');
-        setIsLogin(true);
+        dispatch(login());
         toast.success("Logged In");
     }
 
