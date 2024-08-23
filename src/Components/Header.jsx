@@ -49,7 +49,7 @@ function Header() {
                     </ul>
                 </div>
                 <div className='w-auto text-end hidden md:block cursor-pointer'>
-                    {isLogin && 
+                    {!isLogin && 
                     <div className="flex  ">
                         <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 mx-3 rounded-2xl text-white ' 
                         onClick={() => {
@@ -66,15 +66,20 @@ function Header() {
                     }
 
                     {isLogin && 
-                    <div className="display flex flex-col">
-                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white'>
+                    <div className="flex">
+                        <div className="display flex flex-col">
+                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 mx-3 rounded-2xl text-white'>
                             DashBoard
                         </h1>
-                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white'
-                        onClick={() => dispatch(logout())}>
+                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 mx-3 rounded-2xl text-white'
+                        onClick={() => {
+                            navigate('/')
+                            return dispatch(logout())}} >
                             Log Out
                         </h1>
+                        </div>
                     </div>
+
                     }
                 </div>
 
