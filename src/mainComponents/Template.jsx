@@ -2,7 +2,7 @@ import React from "react";
 import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 
-function Template({ Title, Desc1, Desc2, formType, setIsLogin }) {
+function Template({ Title, Desc1, Desc2, formType }) {
   return (
     <div className="flex justify-center items-center">
       <div className="bg-blue-700 p-5 mt-10 border-[4px] border-black rounded-2xl">
@@ -14,9 +14,9 @@ function Template({ Title, Desc1, Desc2, formType, setIsLogin }) {
         </div>
 
         {formType === "Login" ? (
-          <LoginForm setIsLogin={setIsLogin} />
+          <LoginForm  />
         ) : (
-          <SignupForm setIsLogin={setIsLogin} />
+          <SignupForm  />
         )}
 
         <div>

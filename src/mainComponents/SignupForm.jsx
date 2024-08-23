@@ -2,8 +2,16 @@ import React, { useState } from 'react'
 import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai"
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useSelector, useDispatch } from 'react-redux';
+import {login, logout} from "../features/auth/authSlice"
+
+
 
 function Signupform({setIsLogin}) {
+
+  const isLogin = useSelector((state) => state.auth.isLogin);
+  const dispatch = useDispatch();
+
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -26,7 +34,7 @@ function Signupform({setIsLogin}) {
     event.preventDefault();
     if (formData.password === formData.conPassword) {
       toast.success("Sign Up success");
-      setIsLogin(true);
+      dispatch(login());
       navigate("/dashboard");
     } else {
       toast.error("password does't match");

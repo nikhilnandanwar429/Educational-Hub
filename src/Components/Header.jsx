@@ -1,11 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import {login, logout} from "../features/auth/authSlice"
 
 
-function Header({isLogin, setIsLogin}) {
+function Header() {
 
     const navigate = useNavigate();
+    const isLogin = useSelector((state) => state.auth.isLogin);
+    const dispatch = useDispatch();
     
     
 
@@ -45,7 +49,7 @@ function Header({isLogin, setIsLogin}) {
                     </ul>
                 </div>
                 <div className='w-auto text-end hidden md:block cursor-pointer'>
-                    {!isLogin && 
+                    {isLogin && 
                     <div className="flex  ">
                         <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 mx-3 rounded-2xl text-white ' 
                         onClick={() => {
@@ -67,7 +71,7 @@ function Header({isLogin, setIsLogin}) {
                             DashBoard
                         </h1>
                         <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white'
-                        onClick={setIsLogin(false)}>
+                        onClick={() => dispatch(logout())}>
                             Log Out
                         </h1>
                     </div>
