@@ -1,7 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Header() {
+function Header({isLogin, setIsLogin}) {
+
+    const navigate = useNavigate();
+    
+    
+
     return (
         <header className='w-full h-20 bg-white  flex px-4 py-4 justify-center border border-b-lime-500 shadow-md'  >
             <div className="w-full xl:w-9/12 bg-white  flex px-4  justify-between">
@@ -38,9 +44,33 @@ function Header() {
                     </ul>
                 </div>
                 <div className='w-auto text-end hidden md:block cursor-pointer'>
-                    <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white'>
-                        Resume
-                    </h1>
+                {!isLogin && 
+                    <div>
+                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white' 
+                        onClick={() => {
+                            navigate('/login');
+                        }}>
+                            Log In
+                        </h1>
+                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white' onClick={() => {
+                            navigate('/signup');
+                        }}>
+                            Sign Up
+                        </h1>
+                    </div>
+                    }
+
+                {isLogin && 
+                    <div className="display flex flex-col">
+                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white'>
+                            DashBoard
+                        </h1>
+                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white'
+                        onClick={setIsLogin(false)}>
+                            Log Out
+                        </h1>
+                    </div>
+                    }
                 </div>
 
                 {/* // Three line button */}
