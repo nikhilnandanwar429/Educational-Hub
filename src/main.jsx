@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import { Home } from './Components/index.js'
-import Login from './Components/Login.jsx'
-import Signup from './Components/Signup.jsx'
-import Dashboard from './Components/Dashboard.jsx'
+import { Home, Login, Signup,Dashboard } from './Components/index.js'
 import Toaster from "react-hot-toast"
+import { Provider } from 'react-redux'
+import store from './store/index.js'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,7 +21,9 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    
     <RouterProvider router={router} />
     <Toaster />
+    
   </React.StrictMode>,
 )

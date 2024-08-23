@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+
 function Header({isLogin, setIsLogin}) {
 
     const navigate = useNavigate();
@@ -38,21 +39,21 @@ function Header({isLogin, setIsLogin}) {
                         </li>
                         <li >
                             <NavLink to="/" className='font-bold hover:bg-slate-300 hover:px-2 hover:rounded-lg'>
-                                Home
+                                Courses
                             </NavLink>
                         </li>
                     </ul>
                 </div>
                 <div className='w-auto text-end hidden md:block cursor-pointer'>
-                {!isLogin && 
-                    <div>
-                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white' 
+                    {!isLogin && 
+                    <div className="flex  ">
+                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 mx-3 rounded-2xl text-white ' 
                         onClick={() => {
                             navigate('/login');
                         }}>
                             Log In
                         </h1>
-                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white' onClick={() => {
+                        <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 mx-3 rounded-2xl text-white' onClick={() => {
                             navigate('/signup');
                         }}>
                             Sign Up
@@ -60,7 +61,7 @@ function Header({isLogin, setIsLogin}) {
                     </div>
                     }
 
-                {isLogin && 
+                    {isLogin && 
                     <div className="display flex flex-col">
                         <h1 className='bg-blue-800 w-auto font-bold p-2 px-5 rounded-2xl text-white'>
                             DashBoard
