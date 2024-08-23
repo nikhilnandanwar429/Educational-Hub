@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Footer } from './Components/index'
 
 import './App.css'
 
@@ -8,6 +9,8 @@ function App() {
     <>
       <div>
         Hello World
+        <Footer />
+        
       </div>
     </>
   )
