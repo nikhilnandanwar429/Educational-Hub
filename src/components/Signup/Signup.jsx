@@ -1,7 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../Auth/AuthSlice";
 
 function Signup() {
+
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
+
   return (
     <>
       <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex items-center justify-center min-h-screen">
@@ -40,18 +46,19 @@ function Signup() {
               <button
                 type="submit"
                 className="w-full bg-purple-500 text-white py-2 md:py-3 rounded-lg font-semibold hover:bg-purple-600 transition duration-200"
+                onClick={() => dispatch(login())}
               >
                 Sign Up
               </button>
               <p className="text-center text-gray-600 mt-6">
                 Already have an account?{" "}
-                <a
-                  href="#"
+                <NavLink
+                  to="/login"
                   className="text-purple-500 hover:underline"
                   
                 >
                   Log In
-                </a>
+                </NavLink>
               </p>
             </form>
           </div>
