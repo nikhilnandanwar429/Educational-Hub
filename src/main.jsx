@@ -6,6 +6,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import { Courses, Footer, ForgotPassword, Header, Home, Login, Signup } from './components/index'
 import { store } from './Auth/store.js'
 import { Provider } from 'react-redux'
+import { Toaster } from 'react-hot-toast'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +24,8 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} />    
+    <Toaster />
     </Provider>
   </StrictMode>,
 )
